@@ -41,8 +41,16 @@ def check_win(param):
 
 def new_step():
     computer_choice.set(randint(0, 2))
-    label11.configure(image=image_start)
-    label11.image = image_start
+    match text.get():
+        case "Ты выиграл!":
+            label11.configure(image=image_sad)
+            label11.image = image_sad
+        case "Ты проиграл!":
+            label11.configure(image=image_happy)
+            label11.image = image_happy
+        case _:
+            label11.configure(image=image_start)
+            label11.image = image_start
     button21.configure(state="normal")
     button22.configure(state="normal")
     button23.configure(state="normal")
@@ -62,6 +70,8 @@ computer_balls = IntVar()
 text = StringVar(value="Начнем игру!")
 computer_choice = IntVar(value=randint(0, 2))
 image_start = PhotoImage(file="images/start.png")
+image_happy = PhotoImage(file="images/happy.png")
+image_sad = PhotoImage(file="images/sad.png")
 image_rock = PhotoImage(file="images/rock.png")
 image_scissors = PhotoImage(file="images/scissors.png")
 image_paper = PhotoImage(file="images/paper.png")
